@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Services from '../components/sections/Services.astro';
+import Testimonials from '../components/sections/Testimonials.astro';
+import CtaBanner from '../components/sections/CtaBanner.astro';
+---
+
+<BaseLayout
+  title="Services — The Mama Tales"
+  description="Breathwork, hypnobirthing, workshops, retreats and more. Explore all services offered by Natalie Doyle in Dorset and online."
+>
+  <!-- Page header -->
+  <section class="pt-32 pb-12 bg-cream">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <p class="text-xs tracking-[0.3em] uppercase text-sage mb-3 font-body">What I Offer</p>
+      <h1 class="text-4xl md:text-5xl text-charcoal font-display mb-4">Services</h1>
+      <p class="text-warm-grey max-w-2xl mx-auto">
+        Based in Dorset, England — offering in-person and online sessions.
+      </p>
+    </div>
+  </section>
+
+  <Services />
+  <Testimonials />
+  <CtaBanner />
+</BaseLayout>

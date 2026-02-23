@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const posts = allPosts.sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const categoryLabels: Record<string, string> = {
+  breathwork: 'Breathwork',
+  hypnobirthing: 'Hypnobirthing',
+  parenting: 'Parenting',
+  pregnancy: 'Pregnancy',
+  'nervous-system': 'Nervous System',
+  community: 'Community',
+};
+
+const categoryColours: Record<string, { text: string; bg: string }> = {
+  breathwork: { text: 'text-terracotta', bg: 'bg-terracotta-light/20' },
+  hypnobirthing: { text: 'text-sage', bg: 'bg-sage-pale' },
+  parenting: { text: 'text-sage', bg: 'bg-sage-pale' },
+  pregnancy: { text: 'text-clay', bg: 'bg-blush/30' },
+  'nervous-system': { text: 'text-charcoal', bg: 'bg-light-grey/40' },
+  community: { text: 'text-gold', bg: 'bg-gold/10' },
+};
+---
+
+<BaseLayout
+  title="Journal — The Mama Tales"
+  description="Insights on breathwork, hypnobirthing, conscious parenting and nervous system regulation from Natalie Doyle at The Mama Tales."
+>
+  <section class="pt-32 pb-20 md:pb-28">
+    <div class="max-w-6xl mx-auto px-6">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <p class="text-xs tracking-[0.3em] uppercase text-sage mb-3 font-body">Insights & Inspiration</p>
+        <h1 class="text-4xl md:text-5xl text-charcoal font-display mb-4">The Journal</h1>
+        <p class="text-warm-grey max-w-2xl mx-auto">
+          Thoughts on breathwork, birth preparation, conscious parenting and building a regulated, thriving family life.
+        </p>
+      </div>
+
+      <!-- Posts grid -->
+      {posts.length === 0 ? (
+        <div class="text-center py-20">
+          <p class="text-warm-grey text-lg">Posts coming soon...</p>
+        </div>
+      ) : (
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts.map((post) => {
+            const colours = categoryColours[post.data.category] ?? { text: 'text-sage', bg: 'bg-sage-pale' };
+            return (
+              <a href={`/journal/${post.id}/`} class="group">
+                <article class="bg-warm-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-500 hover:-translate-y-1 h-full flex flex-col">
+                  {/* Image placeholder */}
+                  <div class="h-48 bg-gradient-to-br from-sage-pale/60 via-cream to-blush/30 flex items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-t from-warm-white/20 to-transparent" />
+                    <div class="w-16 h-16 rounded-full bg-warm-white/40 flex items-center justify-center">
+                      <svg class="w-8 h-8 text-sage-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="p-8 flex flex-col flex-1">
+                    <div class="flex items-center gap-3 mb-3">
+                      <span class={`text-xs tracking-[0.2em] uppercase ${colours.text} ${colours.bg} px-3 py-1 rounded-full`}>
+                        {categoryLabels[post.data.category] ?? post.data.category}
+                      </span>
+                    </div>
+                    <h2 class="text-xl font-display text-charcoal mb-3 group-hover:text-sage transition-colors">{post.data.title}</h2>
+                    <p class="text-warm-grey text-sm leading-relaxed mb-6 flex-1">{post.data.description}</p>
+                    <div class="flex items-center justify-between">
+                      <span class="text-xs text-warm-grey">
+                        {post.data.pubDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+                      </span>
+                      <span class="inline-flex items-center text-xs tracking-[0.15em] uppercase text-sage group-hover:gap-2 gap-1 transition-all">
+                        Read
+                        <svg class="w-3 h-3 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </article>
+              </a>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>

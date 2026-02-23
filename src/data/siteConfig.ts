@@ -1,25 +1,24 @@
 export const siteConfig = {
   name: 'The Mama Tales',
   tagline: 'Conscious, Regulated & Authentic Parenting',
-  strapline: 'Parent Healing | Empowered Children | Thriving Generations',
+  strapline: 'Breathwork | Nervous System Regulation | Conscious Parenting',
   description:
-    'Breathwork and hypnobirthing in Dorset with Natalie Doyle. Empowering your journey from pregnancy through birth and beyond.',
+    'Rebirthing breathwork and nervous system regulation in Dorset with Natalie Doyle. Supporting parents to heal, regulate and connect — from conception through parenthood and beyond.',
   url: 'https://themamatales-com.pages.dev',
   email: 'themamatales@gmail.com',
   phone: '07595 348559',
   location: 'Dorset, England',
   social: {
-    instagram: '#',
+    instagram: 'https://www.instagram.com/the_mamatales/',
     facebook: '#',
   },
 } as const;
 
 export const navigation = [
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Kind Words', href: '#testimonials' },
-  { label: 'Community', href: '#community' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About', href: '/about/' },
+  { label: 'Services', href: '/services/' },
+  { label: 'Journal', href: '/journal/' },
+  { label: 'Contact', href: '/contact/' },
 ] as const;
 
 export interface Service {
@@ -32,49 +31,49 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    title: 'Hypnobirthing',
+    title: 'Rebirthing Breathwork',
     description:
-      'Comprehensive courses to prepare you for a calm, confident and empowered birth. Learn breathing, relaxation and visualisation techniques that work with your body.',
-    icon: '🌊',
+      'Powerful, connected breathing sessions to release stored tension, regulate your nervous system and reconnect with your body. A somatic practice that goes beyond relaxation — helping you process, heal and find presence.',
+    icon: '🍃',
     accentColor: 'var(--color-sage)',
     iconBg: 'var(--color-sage-pale)',
   },
   {
-    title: 'Breathwork',
+    title: 'Nervous System Reset',
     description:
-      'Reconnect with your body through powerful breathwork sessions. Release tension, restore balance and access a deep state of relaxation and presence.',
-    icon: '🍃',
+      'Learn to widen your window of tolerance and build genuine resilience. Practical tools rooted in neuroscience to help you co-regulate with your children and respond rather than react.',
+    icon: '✦',
     accentColor: 'var(--color-terracotta)',
     iconBg: 'rgba(196, 132, 108, 0.15)',
   },
   {
     title: 'Walk & Talks',
     description:
-      'Local walks in beautiful Dorset countryside combined with open conversation, connection and gentle movement. A chance to be held in community.',
+      'Gentle walks through beautiful Dorset countryside combined with open conversation, breathwork and connection. A chance to be held in community, in nature.',
     icon: '🌿',
     accentColor: 'var(--color-gold)',
     iconBg: 'rgba(201, 169, 110, 0.15)',
   },
   {
-    title: 'Workshops',
+    title: 'Workshops & Retreats',
     description:
-      'Immersive workshops covering birth preparation, early years neuroscience and conscious parenting. Deep dives into the topics that matter most.',
-    icon: '✧',
+      'Immersive experiences combining breathwork, somatic practices and conscious parenting. Step away from the everyday and sink into deep restoration and connection.',
+    icon: '☽',
     accentColor: 'var(--color-clay)',
     iconBg: 'rgba(181, 147, 122, 0.15)',
   },
   {
-    title: 'Retreats',
+    title: 'Birth Preparation',
     description:
-      'Step away from the everyday and sink into deep relaxation, connection and restoration. Breathwork, yoga, meditation and nourishing community.',
-    icon: '☽',
+      'Hypnobirthing and birth preparation using breathwork, relaxation and visualisation techniques. Feel calm, confident and empowered as you prepare for birth.',
+    icon: '🌊',
     accentColor: 'var(--color-sage-light)',
     iconBg: 'var(--color-sage-pale)',
   },
   {
     title: 'Courses',
     description:
-      'Structured multi-session programmes blending hypnobirthing, breathwork and early years neuroscience to support your entire journey into parenthood.',
+      'Structured programmes weaving breathwork, nervous system regulation and early years neuroscience to support your entire journey into conscious parenthood.',
     icon: '🤍',
     accentColor: 'var(--color-blush)',
     iconBg: 'rgba(232, 207, 192, 0.3)',
@@ -91,9 +90,9 @@ export interface Testimonial {
 export const testimonials: Testimonial[] = [
   {
     quote:
-      "Natalie's hypnobirthing course completely transformed my approach to birth. I went from terrified to truly excited. The breathing techniques carried me through every stage and I felt calm, empowered and in control throughout.",
+      "The breathwork sessions with Natalie have been truly life-changing. I finally feel like I have the tools to regulate myself — not just as a parent, but as a person. I'm calmer, more present and so much more connected with my children.",
     name: 'Placeholder — Client Name',
-    detail: 'Hypnobirthing Course',
+    detail: 'Rebirthing Breathwork',
     isPlaceholder: true,
   },
   {

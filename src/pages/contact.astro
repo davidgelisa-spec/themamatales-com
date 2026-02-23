@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Contact from '../components/sections/Contact.astro';
+import Community from '../components/sections/Community.astro';
+---
+
+<BaseLayout
+  title="Contact — The Mama Tales"
+  description="Get in touch with Natalie Doyle. Book a free connection call or send a message about breathwork and hypnobirthing in Dorset."
+>
+  <!-- Page header -->
+  <section class="pt-32 pb-12 bg-cream">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <p class="text-xs tracking-[0.3em] uppercase text-sage mb-3 font-body">Get in Touch</p>
+      <h1 class="text-4xl md:text-5xl text-charcoal font-display mb-4">Contact</h1>
+      <p class="text-warm-grey max-w-2xl mx-auto">
+        Whether you have questions, want to book a session, or just want to say hello — I'd love to hear from you.
+      </p>
+    </div>
+  </section>
+
+  <Contact />
+  <Community />
+</BaseLayout>

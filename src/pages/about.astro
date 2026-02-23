@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import About from '../components/sections/About.astro';
+import Philosophy from '../components/sections/Philosophy.astro';
+---
+
+<BaseLayout
+  title="About Natalie — The Mama Tales"
+  description="Meet Natalie Doyle — breathwork practitioner and hypnobirthing instructor based in Dorset, helping parents heal, connect and thrive."
+>
+  <!-- Page header -->
+  <section class="pt-32 pb-12 bg-cream">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <p class="text-xs tracking-[0.3em] uppercase text-sage mb-3 font-body">About</p>
+      <h1 class="text-4xl md:text-5xl text-charcoal font-display mb-4">Meet Natalie</h1>
+      <p class="text-warm-grey max-w-2xl mx-auto">
+        The story behind The Mama Tales and the philosophy that drives everything I do.
+      </p>
+    </div>
+  </section>
+
+  <About />
+  <Philosophy />
+</BaseLayout>
