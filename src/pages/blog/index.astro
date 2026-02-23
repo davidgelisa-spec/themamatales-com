@@ -1,0 +1,172 @@
+---
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const posts = allPosts.sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const categoryLabels: Record<string, string> = {
+  breathwork: 'Breathwork',
+  hypnobirthing: 'Hypnobirthing',
+  parenting: 'Parenting',
+  pregnancy: 'Pregnancy',
+  'nervous-system': 'Nervous System',
+  community: 'Community',
+};
+
+const categoryColours: Record<string, { text: string; bg: string }> = {
+  breathwork: { text: 'text-peach-500', bg: 'bg-peach-50' },
+  hypnobirthing: { text: 'text-rose-400', bg: 'bg-rose-50' },
+  parenting: { text: 'text-sage-400', bg: 'bg-sage-50' },
+  pregnancy: { text: 'text-blush-400', bg: 'bg-blush-50' },
+  'nervous-system': { text: 'text-warm-brown', bg: 'bg-cream-dark' },
+  community: { text: 'text-sage-400', bg: 'bg-sage-50' },
+};
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Journal — The Mama Tales</title>
+    <meta name="description" content="Insights on breathwork, hypnobirthing, conscious parenting and nervous system regulation from Natalie Doyle at The Mama Tales." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,300;1,6..12,400&display=swap" rel="stylesheet" />
+  </head>
+  <body class="antialiased">
+    <style is:global>
+      @import "../../styles/global.css";
+    </style>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-cream/80 backdrop-blur-md">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="/" class="font-serif text-2xl text-warm-brown tracking-wide">The Mama Tales</a>
+
+        <button id="mobile-menu-btn" class="md:hidden text-warm-brown" aria-label="Toggle menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
+        <div class="hidden md:flex items-center gap-8">
+          <a href="/#offerings" class="text-sm tracking-widest uppercase text-text-light hover:text-warm-brown transition-colors">Offerings</a>
+          <a href="/#about" class="text-sm tracking-widest uppercase text-text-light hover:text-warm-brown transition-colors">Our Vision</a>
+          <a href="/blog/" class="text-sm tracking-widest uppercase text-warm-brown font-semibold transition-colors">Journal</a>
+          <a href="/#contact" class="text-sm tracking-widest uppercase text-text-light hover:text-warm-brown transition-colors">Contact</a>
+          <a href="/#offerings" class="bg-rose-300/60 hover:bg-rose-300/80 text-warm-brown text-sm tracking-widest uppercase px-6 py-2.5 rounded-full transition-colors">Book Now</a>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="hidden md:hidden bg-cream/95 backdrop-blur-md border-t border-blush-200">
+        <div class="flex flex-col items-center gap-4 py-6">
+          <a href="/#offerings" class="text-sm tracking-widest uppercase text-text-light hover:text-warm-brown transition-colors">Offerings</a>
+          <a href="/#about" class="text-sm tracking-widest uppercase text-text-light hover:text-warm-brown transition-colors">Our Vision</a>
+          <a href="/blog/" class="text-sm tracking-widest uppercase text-warm-brown font-semibold transition-colors">Journal</a>
+          <a href="/#contact" class="text-sm tracking-widest uppercase text-text-light hover:text-warm-brown transition-colors">Contact</a>
+          <a href="/#offerings" class="bg-rose-300/60 hover:bg-rose-300/80 text-warm-brown text-sm tracking-widest uppercase px-6 py-2.5 rounded-full transition-colors">Book Now</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="pt-28 pb-20 md:pb-28">
+      <div class="max-w-6xl mx-auto px-6">
+        <!-- Header -->
+        <div class="text-center mb-16">
+          <p class="text-sm tracking-[0.3em] uppercase text-rose-400 mb-3">Insights & Inspiration</p>
+          <h1 class="text-4xl md:text-5xl text-warm-brown mb-4">The Journal</h1>
+          <p class="text-text-light max-w-2xl mx-auto">
+            Thoughts on breathwork, birth preparation, conscious parenting and building a regulated, thriving family life.
+          </p>
+        </div>
+
+        <!-- Posts grid -->
+        {posts.length === 0 ? (
+          <div class="text-center py-20">
+            <p class="text-text-light text-lg">Posts coming soon...</p>
+          </div>
+        ) : (
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {posts.map((post) => {
+              const colours = categoryColours[post.data.category] ?? { text: 'text-rose-400', bg: 'bg-rose-50' };
+              return (
+                <a href={`/blog/${post.id}/`} class="group">
+                  <article class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 h-full flex flex-col">
+                    {/* Image placeholder */}
+                    <div class="h-48 bg-gradient-to-br from-blush-100 via-rose-50 to-peach-50 flex items-center justify-center relative overflow-hidden">
+                      <div class="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent" />
+                      <div class={`w-16 h-16 rounded-full bg-white/40 flex items-center justify-center`}>
+                        <svg class="w-8 h-8 text-rose-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-1">
+                      <div class="flex items-center gap-3 mb-3">
+                        <span class={`text-xs tracking-[0.2em] uppercase ${colours.text} ${colours.bg} px-3 py-1 rounded-full`}>
+                          {categoryLabels[post.data.category] ?? post.data.category}
+                        </span>
+                      </div>
+                      <h2 class="text-xl text-warm-brown mb-3 group-hover:text-rose-400 transition-colors">{post.data.title}</h2>
+                      <p class="text-text-light text-sm leading-relaxed mb-6 flex-1">{post.data.description}</p>
+                      <div class="flex items-center justify-between">
+                        <span class="text-xs text-warm-gray">
+                          {post.data.pubDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+                        </span>
+                        <span class="inline-flex items-center text-xs tracking-widest uppercase text-rose-400 group-hover:gap-2 gap-1 transition-all">
+                          Read
+                          <svg class="w-3 h-3 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </article>
+                </a>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-warm-brown text-white/70 py-12">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-8 items-center">
+          <div>
+            <p class="font-serif text-xl text-white mb-2">The Mama Tales</p>
+            <p class="text-sm">Conscious, Regulated & Authentic Parenting</p>
+          </div>
+          <div class="text-center">
+            <p class="text-sm">Dorset, New Forest & Hampshire, UK</p>
+            <p class="text-sm">Online & In-Person</p>
+          </div>
+          <div class="text-right">
+            <p class="text-sm">&copy; {new Date().getFullYear()} The Mama Tales</p>
+            <p class="text-sm">All rights reserved</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      btn?.addEventListener('click', () => {
+        menu?.classList.toggle('hidden');
+      });
+      menu?.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          menu?.classList.add('hidden');
+        });
+      });
+    </script>
+  </body>
+</html>

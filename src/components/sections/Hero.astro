@@ -1,0 +1,73 @@
+---
+import { Image } from 'astro:assets';
+import { siteConfig } from '../../data/siteConfig';
+import nataliePortrait from '../../assets/images/natalie-portrait.png';
+---
+
+<section class="relative min-h-screen flex items-center overflow-hidden">
+  <!-- Earthy gradient background -->
+  <div class="absolute inset-0 bg-gradient-to-br from-sage-pale via-cream to-terracotta-light/30 animate-gradient"></div>
+
+  <!-- Organic floating shapes -->
+  <div class="absolute top-16 right-0 w-[500px] h-[500px] bg-sage-light/20 rounded-full blur-3xl"></div>
+  <div class="absolute -bottom-20 -left-20 w-96 h-96 bg-terracotta-light/15 rounded-full blur-3xl"></div>
+  <div class="absolute top-1/3 left-1/4 w-72 h-72 bg-blush/15 rounded-full blur-2xl"></div>
+  <div class="absolute bottom-1/4 right-1/3 w-40 h-40 bg-sage/10 rounded-full blur-xl"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-6 pt-32 pb-24">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <!-- Content -->
+      <div class="text-center md:text-left">
+        <p class="text-xs tracking-[0.3em] uppercase text-sage mb-5 font-body font-normal">
+          {siteConfig.strapline}
+        </p>
+        <h1 class="text-5xl md:text-7xl text-charcoal leading-[1.08] mb-6 font-display">
+          The Mama<br />
+          <span class="italic text-sage">Tales</span>
+        </h1>
+        <p class="text-lg md:text-xl text-warm-grey leading-relaxed max-w-lg mb-10 font-light">
+          Imagine a world where your healing as a parent doesn't just change you — it empowers
+          your children and ripples into thriving future generations.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+          <a
+            href="#services"
+            class="bg-sage hover:bg-sage-light text-warm-white px-8 py-3.5 rounded-full text-xs tracking-[0.2em] uppercase transition-all hover:shadow-lg"
+          >
+            Explore Services
+          </a>
+          <a
+            href="#about"
+            class="border border-charcoal/20 hover:border-sage text-charcoal hover:text-sage px-8 py-3.5 rounded-full text-xs tracking-[0.2em] uppercase transition-all"
+          >
+            Meet Natalie
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero image placeholder — organic blob shape -->
+      <div class="relative flex justify-center">
+        <div class="relative w-80 h-96 md:w-96 md:h-[480px]">
+          <!-- Decorative ring -->
+          <div class="absolute -inset-4 rounded-[40%_60%_55%_45%/55%_45%_60%_40%] border-2 border-sage-light/40 rotate-6"></div>
+          <div class="w-full h-full rounded-[40%_60%_55%_45%/55%_45%_60%_40%] overflow-hidden shadow-xl">
+            <Image
+              src={nataliePortrait}
+              alt="Natalie Doyle with her daughter"
+              width={480}
+              height={600}
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Curved section divider -->
+  <div class="absolute bottom-0 left-0 right-0">
+    <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
+      <path d="M0 120L60 108C120 96 240 72 360 66C480 60 600 72 720 78C840 84 960 84 1080 78C1200 72 1320 60 1380 54L1440 48V120H0Z" fill="#FAF6F1"/>
+    </svg>
+  </div>
+</section>

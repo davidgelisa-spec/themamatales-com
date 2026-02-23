@@ -1,0 +1,47 @@
+---
+import { siteConfig } from '../../data/siteConfig';
+---
+
+<section id="contact" class="py-20 md:py-28 relative overflow-hidden scroll-mt-20">
+  <div class="absolute inset-0 bg-gradient-to-br from-sage-pale/40 via-cream to-blush/20"></div>
+  <div class="absolute top-0 left-0 w-72 h-72 bg-sage/10 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-0 right-0 w-96 h-96 bg-terracotta-light/10 rounded-full blur-3xl"></div>
+
+  <div class="relative z-10 max-w-3xl mx-auto px-6 text-center">
+    <p class="text-xs tracking-[0.3em] uppercase text-sage mb-3">Take the First Step</p>
+    <h2 class="text-4xl md:text-5xl text-charcoal font-display mb-6 leading-tight">
+      Ready to begin your journey?
+    </h2>
+    <p class="text-lg text-warm-grey leading-relaxed mb-10 max-w-2xl mx-auto">
+      Whether you're preparing for birth, seeking breathwork support, or simply want to
+      connect — I'd love to hear from you. Book a free connection call and let's chat.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+      <a
+        href={`mailto:${siteConfig.email}`}
+        class="bg-sage hover:bg-sage-light text-warm-white px-10 py-4 rounded-full text-xs tracking-[0.2em] uppercase transition-all hover:shadow-lg"
+      >
+        Book a Connection Call
+      </a>
+      <a
+        href={`mailto:${siteConfig.email}?subject=Enquiry`}
+        class="bg-warm-white/60 hover:bg-warm-white text-charcoal px-10 py-4 rounded-full text-xs tracking-[0.2em] uppercase transition-all border border-light-grey/50"
+      >
+        Send a Message
+      </a>
+    </div>
+
+    <!-- Contact details -->
+    <div class="flex flex-col sm:flex-row justify-center gap-8 text-sm text-warm-grey">
+      <a href={`mailto:${siteConfig.email}`} class="hover:text-sage transition-colors">
+        {siteConfig.email}
+      </a>
+      {siteConfig.phone && (
+        <a href={`tel:${siteConfig.phone.replace(/\s/g, '')}`} class="hover:text-sage transition-colors">
+          {siteConfig.phone}
+        </a>
+      )}
+      <span>{siteConfig.location}</span>
+    </div>
+  </div>
+</section>

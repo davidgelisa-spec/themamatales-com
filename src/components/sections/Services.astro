@@ -1,0 +1,45 @@
+---
+import { services } from '../../data/siteConfig';
+---
+
+<section id="services" class="py-20 md:py-28 bg-cream scroll-mt-20">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <p class="text-xs tracking-[0.3em] uppercase text-sage mb-3">What I Offer</p>
+      <h2 class="text-4xl md:text-5xl text-charcoal font-display mb-4">Services</h2>
+      <p class="text-warm-grey max-w-2xl mx-auto">
+        Based in Dorset, England — offering in-person and online sessions.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {services.map((service) => (
+        <div class="group bg-warm-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-500 hover:-translate-y-1">
+          <!-- Accent top border -->
+          <div class="h-1" style={`background-color: ${service.accentColor}`}></div>
+          <div class="p-8">
+            <!-- Icon -->
+            <div
+              class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-5"
+              style={`background-color: ${service.iconBg}`}
+            >
+              {service.icon}
+            </div>
+            <h3 class="text-xl font-display text-charcoal mb-3">{service.title}</h3>
+            <p class="text-warm-grey text-sm leading-relaxed mb-5">{service.description}</p>
+            <a
+              href="#contact"
+              class="inline-flex items-center text-xs tracking-[0.15em] uppercase transition-colors gap-2 group-hover:gap-3"
+              style={`color: ${service.accentColor}`}
+            >
+              Learn More
+              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://themamatales-com.pages.dev/sitemap-index.xml

@@ -1,0 +1,69 @@
+---
+import { Image } from 'astro:assets';
+import { qualifications } from '../../data/siteConfig';
+import yurtScene from '../../assets/images/yurt-scene.png';
+import childWildflowers from '../../assets/images/child-wildflowers.png';
+---
+
+<section id="about" class="py-20 md:py-28 relative overflow-hidden scroll-mt-20">
+  <!-- Layered background -->
+  <div class="absolute inset-0 bg-gradient-to-b from-cream via-sage-pale/30 to-cream"></div>
+  <div class="absolute top-0 right-0 w-1/2 h-full bg-sage-pale/30 rounded-l-[80px]"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+      <!-- Image cluster -->
+      <div class="relative h-[500px]">
+        <!-- Large circular image — yurt scene -->
+        <div class="absolute top-0 left-0 w-72 h-72 rounded-full shadow-lg overflow-hidden">
+          <Image
+            src={yurtScene}
+            alt="Mother and child in a yurt"
+            width={288}
+            height={288}
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <!-- Small offset circle — child in wildflowers -->
+        <div class="absolute bottom-12 right-4 w-52 h-52 rounded-full shadow-lg overflow-hidden">
+          <Image
+            src={childWildflowers}
+            alt="Child exploring wildflowers in nature"
+            width={208}
+            height={208}
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <!-- Decorative dots -->
+        <div class="absolute top-1/2 right-1/3 w-8 h-8 rounded-full bg-sage-light/40"></div>
+        <div class="absolute bottom-4 left-1/3 w-5 h-5 rounded-full bg-terracotta-light/40"></div>
+      </div>
+
+      <!-- Content -->
+      <div>
+        <p class="text-xs tracking-[0.3em] uppercase text-sage mb-3 font-body">Meet Natalie</p>
+        <h2 class="text-4xl md:text-5xl text-charcoal mb-6 leading-tight font-display">
+          This isn't just about birth or parenting tips.
+        </h2>
+        <p class="text-lg text-warm-grey leading-relaxed mb-6">
+          It's about rewriting the future — creating a conscious pregnancy, a regulated birth,
+          and the foundation for generations of resilience and emotional intelligence.
+        </p>
+        <p class="text-warm-grey leading-relaxed mb-8">
+          At The Mama Tales, we harness the ancient wisdom of breathwork and the science of
+          nervous system regulation to guide you on your journey. We believe in addressing
+          root causes — not sticking-plaster solutions — to facilitate true healing.
+        </p>
+
+        <!-- Qualifications -->
+        <div class="flex flex-wrap gap-2">
+          {qualifications.map((q) => (
+            <span class="text-xs tracking-wide bg-sage-pale text-sage px-3 py-1.5 rounded-full">
+              {q}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

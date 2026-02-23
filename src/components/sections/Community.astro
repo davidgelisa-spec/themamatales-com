@@ -1,0 +1,39 @@
+---
+import { siteConfig } from '../../data/siteConfig';
+---
+
+<section id="community" class="py-20 md:py-28 relative overflow-hidden scroll-mt-20">
+  <div class="absolute inset-0 bg-gradient-to-br from-sage-pale via-cream to-blush/30"></div>
+  <div class="absolute top-0 right-0 w-72 h-72 bg-sage-light/20 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-0 left-0 w-64 h-64 bg-terracotta-light/15 rounded-full blur-3xl"></div>
+
+  <div class="relative z-10 max-w-3xl mx-auto px-6 text-center">
+    <p class="text-xs tracking-[0.3em] uppercase text-sage mb-3">Community</p>
+    <h2 class="text-4xl md:text-5xl text-charcoal font-display mb-6 leading-tight">
+      You don't have to walk<br />
+      <span class="italic text-sage">this path alone.</span>
+    </h2>
+    <p class="text-lg text-warm-grey leading-relaxed mb-10 max-w-2xl mx-auto">
+      Join a growing community of conscious parents. From walk and talks on the Dorset
+      coast to online breathwork circles — there's a place for you here.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a
+        href={siteConfig.social.instagram}
+        target="_blank"
+        rel="noopener"
+        class="bg-charcoal hover:bg-warm-grey text-warm-white px-8 py-3.5 rounded-full text-xs tracking-[0.2em] uppercase transition-all hover:shadow-lg"
+      >
+        Follow on Instagram
+      </a>
+      <a
+        href={siteConfig.social.facebook}
+        target="_blank"
+        rel="noopener"
+        class="border border-charcoal/20 hover:border-sage text-charcoal hover:text-sage px-8 py-3.5 rounded-full text-xs tracking-[0.2em] uppercase transition-all"
+      >
+        Join Facebook Group
+      </a>
+    </div>
+  </div>
+</section>

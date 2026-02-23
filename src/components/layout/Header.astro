@@ -1,0 +1,92 @@
+---
+import { siteConfig, navigation } from '../../data/siteConfig';
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-cream/90 backdrop-blur-md border-b border-light-grey/40 transition-all duration-300" id="site-nav">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="font-display text-2xl text-charcoal tracking-wide hover:text-sage transition-colors">
+      {siteConfig.name}
+    </a>
+
+    <!-- Mobile menu button -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-sage-pale transition-colors"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <svg class="w-5 h-5 text-charcoal" id="menu-icon-open" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <svg class="w-5 h-5 text-charcoal hidden" id="menu-icon-close" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <!-- Desktop nav -->
+    <div class="hidden md:flex items-center gap-8">
+      {navigation.map((item) => (
+        <a
+          href={item.href}
+          class="text-xs tracking-[0.2em] uppercase text-warm-grey hover:text-sage font-body font-normal transition-colors"
+        >
+          {item.label}
+        </a>
+      ))}
+      <a
+        href="#contact"
+        class="bg-sage hover:bg-sage-light text-warm-white text-xs tracking-[0.2em] uppercase px-6 py-2.5 rounded-full transition-all hover:shadow-md"
+      >
+        Get in Touch
+      </a>
+    </div>
+  </div>
+
+  <!-- Mobile nav panel -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden bg-cream/98 backdrop-blur-lg border-t border-light-grey/30"
+  >
+    <div class="flex flex-col items-center gap-5 py-8 px-6">
+      {navigation.map((item) => (
+        <a
+          href={item.href}
+          class="text-sm tracking-[0.2em] uppercase text-warm-grey hover:text-sage transition-colors mobile-nav-link"
+        >
+          {item.label}
+        </a>
+      ))}
+      <a
+        href="#contact"
+        class="mt-2 bg-sage hover:bg-sage-light text-warm-white text-sm tracking-[0.2em] uppercase px-8 py-3 rounded-full transition-all mobile-nav-link"
+      >
+        Get in Touch
+      </a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden');
+    iconOpen?.classList.toggle('hidden');
+    iconClose?.classList.toggle('hidden');
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  });
+
+  document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu?.classList.add('hidden');
+      iconOpen?.classList.remove('hidden');
+      iconClose?.classList.add('hidden');
+      btn?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
