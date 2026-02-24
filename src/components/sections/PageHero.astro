@@ -1,0 +1,47 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  subtitle?: string;
+  imageSrc?: ImageMetadata;
+  imageAlt?: string;
+}
+
+import { Image } from 'astro:assets';
+import goldenHour from '../../assets/images/u5868562739_Magical_golden_hour_sunset_warm_amber_and_honey-t_15af2859-342e-4f32-8124-ed714f1b3f8e_1.png';
+
+const { eyebrow, title, subtitle, imageSrc, imageAlt = '' } = Astro.props;
+const img = imageSrc ?? goldenHour;
+---
+
+<section class="relative h-[50vh] min-h-[360px] max-h-[500px] overflow-hidden flex items-center">
+  <!-- Background image with Ken Burns pan -->
+  <div class="absolute inset-0 animate-ken-burns">
+    <Image
+      src={img}
+      alt={imageAlt}
+      width={1440}
+      height={600}
+      class="w-full h-full object-cover"
+      quality={80}
+    />
+  </div>
+
+  <!-- Overlay gradient — warm tint for readability -->
+  <div class="absolute inset-0 bg-gradient-to-r from-charcoal/60 via-charcoal/40 to-charcoal/20"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-charcoal/30 to-transparent"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-6xl mx-auto px-6 pt-20 w-full">
+    <div class="max-w-xl">
+      <p class="text-xs tracking-[0.3em] uppercase text-sage-light mb-3 font-body">{eyebrow}</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl text-warm-white font-display mb-4 leading-tight">{title}</h1>
+      {subtitle && (
+        <p class="text-lg text-warm-white/80 leading-relaxed">{subtitle}</p>
+      )}
+    </div>
+  </div>
+
+  <!-- Bottom fade into cream -->
+  <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-cream to-transparent"></div>
+</section>

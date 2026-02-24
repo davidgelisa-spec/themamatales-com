@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/sections/PageHero.astro';
 import { getCollection } from 'astro:content';
 
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
@@ -27,19 +28,18 @@ const categoryColours: Record<string, { text: string; bg: string }> = {
 ---
 
 <BaseLayout
-  title="Journal — The Mama Tales"
-  description="Insights on breathwork, hypnobirthing, conscious parenting and nervous system regulation from Natalie Doyle at The Mama Tales."
+  title="Journal — Rebirthing Breathwork Mastery"
+  description="Insights on rebirthing breathwork, nervous system regulation and self-mastery from Natalie Doyle at Rebirthing Breathwork Mastery."
 >
-  <section class="pt-32 pb-20 md:pb-28">
+  <PageHero
+    eyebrow="Insights & Inspiration"
+    title="The Journal"
+    subtitle="Thoughts on breathwork, nervous system regulation, self-mastery and embodied living."
+    imageAlt="Journal"
+  />
+
+  <section class="pb-20 md:pb-28">
     <div class="max-w-6xl mx-auto px-6">
-      <!-- Header -->
-      <div class="text-center mb-16">
-        <p class="text-xs tracking-[0.3em] uppercase text-sage mb-3 font-body">Insights & Inspiration</p>
-        <h1 class="text-4xl md:text-5xl text-charcoal font-display mb-4">The Journal</h1>
-        <p class="text-warm-grey max-w-2xl mx-auto">
-          Thoughts on breathwork, birth preparation, conscious parenting and building a regulated, thriving family life.
-        </p>
-      </div>
 
       <!-- Posts grid -->
       {posts.length === 0 ? (
